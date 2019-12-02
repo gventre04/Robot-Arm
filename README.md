@@ -76,7 +76,7 @@ Our arm will consist of gears that will make up the arm of the robot, as well as
 
 ## Scope
 
-
+This project will definitely be challenging, even though we are doing the most basic design of the robot arm (articulated robot arm). Last year, Eli and Ghislian finished the solidworks aspect of this project, minus a couple of design errors in the bottom piece of the assembly. The main focus this year will be wiring and coding. Wiring will simply consist of attaching all the servos of the actual robot arm to the arduino that will be at the bottom of the box, making sure that the wiring is done neatly and efficiently. The coding will consist of using processing to program the robot arm's servos to be controlled using the W A S D keys on the keyboard. My main area for concern will be the mechanics of the whole box, I am afraid that the arm will either be too heavy to move smoothly, or that the gear system that will turn the arm won't function properly, as it was the result of the scrapped harmonic drive idea. 
 
 ## Robot Arm
 * [Robot Arm](#Robot-Arm)
