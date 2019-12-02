@@ -23,7 +23,7 @@ Our problem is finishing the robot arm that Ghislain and Eli worked on last year
 
 ### Solution
 
-We selected the articulated robot arm due to time constraints as well as level of difficulty. We will be able to use previously completed articulated robot arms to guide our project and make it much easier than if we selected a less popular type of arm. Our arm will consist of gears that will make up the arm of the robot, as well as many servos to control each individual section of the robot arm. We will code/program the arm to specifically pick up a plastic cup and move it around using the W A S D keys on the keyboard on processing.
+Our arm will consist of gears that will make up the arm of the robot, as well as many servos to control each individual section of the robot arm. We will code/program the arm to specifically pick up a plastic cup and move it around using the W A S D keys on the keyboard on processing. The challenge will be picking up where we left off last year, polishing up the solidworks (as it was mainly finished) and completing the wiring and coding of the box, which will be our main focus this year.
 
 ## Criteria and Constraints
 
@@ -71,8 +71,8 @@ We selected the articulated robot arm due to time constraints as well as level o
 ## Schedule
 
 | Goals for G   | Goals for Deo | What G Accomplished  | What Deo Accomplished |
-| ------------- |:-------------:| --------------------:|:---------------------:|
-
+|:-------------:|:-------------:| --------------------:|:---------------------:|
+|Finish Robot Arm planning|Make a servo move with processing|||
 ## Scope
 
 ## Robot Arm
