@@ -71,9 +71,12 @@ Our arm will consist of gears that will make up the arm of the robot, as well as
 ## Schedule
 
 | Goals for G   | Goals for Deo | What G Accomplished  | What Deo Accomplished |
-|:-------------:|:-------------:| --------------------:|:---------------------:|
-|Finish Robot Arm planning|Make a servo move with processing|||
+|:-------------:|:-------------:|:--------------------:|:---------------------:|
+|Finish Robot Arm planning and bottom piece of assembly|Make a servo move with processing|||
+
 ## Scope
+
+
 
 ## Robot Arm
 * [Robot Arm](#Robot-Arm)
