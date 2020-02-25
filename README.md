@@ -84,7 +84,7 @@ This project will definitely be challenging, even though we are doing the most b
 
 (Add more, make more specific)
 
-* Arduino Uno
+* Adafruit Metro Express
 
 * 1 Prototyping Shield
 
@@ -96,8 +96,13 @@ This project will definitely be challenging, even though we are doing the most b
 
 * 4-40 Screws and nuts
 
-* Continuous Rotation Servos (4)
+* 180 Rotation Servos (4)
 
+* 1 Universal Asynchronous Receiver/Transmitter(UART)
+
+* 1 Breadboard
+
+* Battery Pack
 
 ## Robot Arm Documentation
 * [Pictures](#Pictures)
