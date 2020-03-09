@@ -106,10 +106,25 @@ This project will definitely be challenging, even though we are doing the most b
 
 ## Robot Arm Documentation
 * [Pictures](#Pictures)
+* [Code](#Code)
 * [Fritzing](#Fritzing)
 * [Reflection](#Reflection)
 
 ## Pictures
+
+## Code
+
+### Mu Code
+
+```
+Put Mu Code Here 
+```
+
+### Processing Code
+
+```
+Put Processing Code Here
+```
 
 ## Fritzing
 
