@@ -185,7 +185,7 @@ while True:
 ### Processing Code
 
 Put Processing Code Here
-
+''''
 import processing.serial.*;
 Serial myPort;
 color b = color(0, 0, 0);  // Define color 'b'
