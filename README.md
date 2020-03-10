@@ -116,7 +116,7 @@ This project will definitely be challenging, even though we are doing the most b
 
 ### Mu Code
 
-```
+
 Put Mu Code Here 
 
 import board #pylint: disable-msg=import-error
@@ -184,7 +184,6 @@ while True:
     time.sleep(0.01)#wait a little bit
 ### Processing Code
 
-```
 Put Processing Code Here
 
 import processing.serial.*;
