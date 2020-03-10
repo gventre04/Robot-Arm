@@ -118,7 +118,7 @@ This project will definitely be challenging, even though we are doing the most b
 
 ```
 Put Mu Code Here 
-```
+
 import board #pylint: disable-msg=import-error
 import busio #pylint: disable-msg=import-error
 import time
@@ -186,7 +186,7 @@ while True:
 
 ```
 Put Processing Code Here
-```
+
 import processing.serial.*;
 Serial myPort;
 color b = color(0, 0, 0);  // Define color 'b'
