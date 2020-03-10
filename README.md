@@ -119,12 +119,184 @@ This project will definitely be challenging, even though we are doing the most b
 ```
 Put Mu Code Here 
 ```
+import board #pylint: disable-msg=import-error
+import busio #pylint: disable-msg=import-error
+import time
+from adafruit_motor import servo #pylint: disable-msg=import-error
+import pulseio #pylint: disable-msg=import-error
 
+uart = busio.UART(board.TX, board.RX, baudrate=9600)#transmit with pin tx, receive with rx, at a speed of 9600 pulses per second
+
+pwm = pulseio.PWMOut(board.D13, frequency=50, duty_cycle=0)#set up the servos
+pwm2 = pulseio.PWMOut(board.D12, frequency=50, duty_cycle=0)
+pwm3 = pulseio.PWMOut(board.D11, frequency=50, duty_cycle=0)
+pwm4 = pulseio.PWMOut(board.D4, frequency=50, duty_cycle=0)
+
+servo1 = servo.Servo(pwm, min_pulse=500, max_pulse=2400)
+servo2 = servo.Servo(pwm2, min_pulse=500, max_pulse=2400)
+servo3 = servo.Servo(pwm3, min_pulse=500, max_pulse=2400)
+servo4 = servo.Servo(pwm4, min_pulse=500, max_pulse=2400)
+
+servo1angle = 0
+servo2angle = 0
+servo3angle = 0
+servo4angle = 0
+
+temp = ''#the most recent digit/symbol from the uart
+store = []#an array of digits from the uart
+empty = ''#used for combining strings into digitsaa
+
+
+while True:
+    temp = uart.read(1)#read one byte frmo uart
+    if temp is not None:#check to see if there is data
+        temp = temp.decode("utf-8")#turn the byte into a string
+
+        if temp == "%":
+            servo1angle = int(empty.join(store))#combine the contents of store with empty in between each element, then cast as an int
+            store.clear()#remove every element from store
+        elif temp == "#":
+            servo2angle = int(empty.join(store))
+            store.clear()
+        elif temp == "$":
+            servo3angle = int(empty.join(store))
+            store.clear()
+        elif temp == "@":
+            servo4angle = int(empty.join(store))
+            store.clear()
+
+        else:
+            store.append(temp)#add an element to store with value of temp
+            servo1.angle = servo1angle#write an angle to a servo
+            servo2.angle = servo2angle
+            servo3.angle = servo3angle
+            servo4.angle = servo4angle
+
+
+            print(servo1angle, end="\t")
+            print(servo2angle, end="\t")
+            print(servo3angle, end="\t")
+            print(servo4angle)
+
+    else:
+        print("all is quiet")
+
+    time.sleep(0.01)#wait a little bit
 ### Processing Code
 
 ```
 Put Processing Code Here
 ```
+import processing.serial.*;
+Serial myPort;
+color b = color(0, 0, 0);  // Define color 'b'
+int servo1angle = 0;
+int staticAngle = 0;
+int servo2angle = 0;
+int staticAngle2 = 0;
+int servo3angle = 0;
+int staticAngle3 = 0;
+int servo4angle = 0;
+int staticAngle4 = 0;
+
+int oldmillis = 0;
+String message = "";
+
+void setup() {
+  size(300, 400);
+  background(0);
+  println("Available serial ports:");
+  println(Serial.list());
+  myPort = new Serial(this, Serial.list()[2], 9600);
+}
+void draw() {
+  servo1angle = round(map(mouseX, 0, 300, 0, 179));//maps the X position into something the servo would like
+  servo2angle = round(min(179, map(mouseX, 0, 300, 0, 179)));
+  servo3angle = round(min(179, map(mouseX, 0, 300, 0, 179)));
+  servo4angle = round(min(179, map(mouseX, 0, 300, 0, 179)));
+
+  background(230);//makes the background gray
+  stroke(255, 0, 0);//gets the color to red
+  strokeWeight(1);//makes the pen thickness very thin
+  line(150, 0, 150, 300);//draws a line
+  stroke(150, 0, 255);//sets the color to purple
+  strokeWeight(5);
+  fill(0, 0, 0, 0);//makes it so there's only an outline, so the rectangles will be border only
+  rect(1, 2, 297, 299);//draw a rectangle
+  rect(1, 300, 297, 97);
+  textSize(30);//set text size
+  fill(b);//set color
+  text("Servo:", 20, 335);//write text
+  text(servo1angle+"°", 160, 335);
+
+  stroke(0);
+  ellipse(mouseX, mouseY, 1, 1);
+}
+void keyPressed() {
+  message = staticAngle+"%"+staticAngle2+"#"+staticAngle3+"$"+staticAngle4+"@";
+
+  if (keyPressed) {
+    if (key == 'a' || key == 'A') {
+      staticAngle = servo1angle;
+      message = staticAngle+"%"+staticAngle2+"#"+staticAngle3+"$"+staticAngle4+"@";
+    }
+
+    if (key == 'd' || key == 'D') {
+      staticAngle++;
+      message = staticAngle+"%"+staticAngle2+"#"+staticAngle3+"$"+staticAngle4+"@";
+    }
+
+    if (key == 's' || key == 'S' ) {
+      staticAngle--;
+      message = staticAngle+"%"+staticAngle2+"#"+staticAngle3+"$"+staticAngle4+"@";
+    }
+
+    if (key == 'q' || key == 'Q') {
+      staticAngle2 = servo2angle;
+      message = staticAngle+"%"+staticAngle2+"#"+staticAngle3+"$"+staticAngle4+"@";
+    }
+    if (key == 'w' || key == 'W' ) {
+      staticAngle2--;
+      message = staticAngle+"%"+staticAngle2+"#"+staticAngle3+"$"+staticAngle4+"@";
+    }
+    if (key == 'E' || key == 'e') {
+      staticAngle2++;
+      message = staticAngle+"%"+staticAngle2+"#"+staticAngle3+"$"+staticAngle4+"@";
+    }
+    if (key == 'z' || key == 'Z') {
+      staticAngle3 = servo3angle;
+      message = staticAngle+"%"+staticAngle2+"#"+staticAngle3+"$"+staticAngle4+"@";
+    }
+    if (key == 'c' || key == 'C') {
+      staticAngle3--;
+      message = staticAngle+"%"+staticAngle2+"#"+staticAngle3+"$"+staticAngle4+"@";
+    }
+    if (key == 'x' || key == 'X') {
+      staticAngle3++;
+      message = staticAngle+"%"+staticAngle2+"#"+staticAngle3+"$"+staticAngle4+"@";
+    }
+    if (key == 'i' || key == 'I') {
+      staticAngle4 = servo4angle;
+      message = staticAngle+"%"+staticAngle2+"#"+staticAngle3+"$"+staticAngle4+"@";
+    }
+     if (key == 'o' || key == 'O') {
+      staticAngle4++;
+      message = staticAngle+"%"+staticAngle2+"#"+staticAngle3+"$"+staticAngle4+"@";
+    }
+
+    if (key == 'p' || key == 'P') {
+      staticAngle4--;
+      message = staticAngle+"%"+staticAngle2+"#"+staticAngle3+"$"+staticAngle4+"@";
+    }
+
+    if (millis()-oldmillis>=100) {//check if it has baaaeen 100 milliseconds since it last sent a message
+      oldmillis =  millis();
+      print(message);
+      myPort.write(message);
+    }
+  }
+}
+
 
 ## Fritzing
 
