@@ -116,9 +116,7 @@ This project will definitely be challenging, even though we are doing the most b
 
 ### Mu Code
 
-''''
-Put Mu Code Here 
-
+```python
 import board #pylint: disable-msg=import-error
 import busio #pylint: disable-msg=import-error
 import time
@@ -182,10 +180,11 @@ while True:
         print("all is quiet")
 
     time.sleep(0.01)#wait a little bit
+```
+
 ### Processing Code
 
-Put Processing Code Here
-''''
+```
 import processing.serial.*;
 Serial myPort;
 color b = color(0, 0, 0);  // Define color 'b'
@@ -295,7 +294,7 @@ void keyPressed() {
     }
   }
 }
-
+```
 
 ## Fritzing
 
